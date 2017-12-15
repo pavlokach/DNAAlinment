@@ -8,7 +8,7 @@ class DNAAlignment:
         self.score = self.get_best_score(self.dna1, self.dna2)
 
     def __str__(self):
-        return str(self.score) + "\n" + "Score: " + self.score.count_score()
+        return str(self.score) + "\n" + "Score: " + str(self.score.count_score())
 
     def get_best_score(self, dna1, dna2):
         l1, l2 = len(dna1), len(dna2)
@@ -64,5 +64,7 @@ class Alignment:
         self.dna1 = first_nucleotide + self.dna1
         self.dna2 = second_nucleotide + self.dna2
 
-# x = DNAAlignment("GGCC", "TCC")
-# y = Alignment()
+
+#x = DNAAlignment("GGCC", "TCC")
+#x.count_score()
+#print(x)

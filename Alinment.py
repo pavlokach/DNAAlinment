@@ -14,8 +14,10 @@ class DNAAlignment:
         return str(self.score) + "\n" + "Score: " + str(self.score.count_score())
 
     def get_best_score(self, dna1, dna2):
+        # Getting the best alignment score and alignment itself using recursion
         l1, l2 = len(dna1), len(dna2)
         if l1 == 0 and l2 == 0:
+            # getting out of the recursion condition
             return Alignment()
         elif l2 == 0:
             result = self.get_best_score(dna1[1:], dna2)
@@ -52,6 +54,7 @@ class Alignment(DNAAlignment):
         return self.dna1 + "\n" + self.dna2
 
     def count_score(self):
+        # Counts the score of 2 sequences
         curr_score = 0
         l1 = len(self.dna1)
         for i in range(l1):
@@ -64,6 +67,7 @@ class Alignment(DNAAlignment):
         return curr_score
 
     def add_match(self, first_nucleotide, second_nucleotide):
+        # Adding nucleotides to the beginning of the sequences
         self.dna1 = first_nucleotide + self.dna1
         self.dna2 = second_nucleotide + self.dna2
 

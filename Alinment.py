@@ -1,6 +1,7 @@
-class DNAAlignment:
-    symbol = "-"
+symbol = "-"
 
+
+class DNAAlignment:
     def __init__(self, input_dna1, input_dna2):
         self.dna1 = input_dna1
         self.dna2 = input_dna2
@@ -18,17 +19,17 @@ class DNAAlignment:
             return Alignment()
         elif l2 == 0:
             result = self.get_best_score(dna1[1:], dna2)
-            result.add_match(dna1[0], self.symbol)
+            result.add_match(dna1[0], symbol)
             return result
         elif l1 == 0:
             result = self.get_best_score(dna1, dna2[1:])
-            result.add_match(self.symbol, dna2[0])
+            result.add_match(symbol, dna2[0])
             return result
         else:
             first = self.get_best_score(dna1[1:], dna2)
-            first.add_match(dna1[0], self.symbol)
+            first.add_match(dna1[0], symbol)
             second = self.get_best_score(dna1, dna2[1:])
-            second.add_match(self.symbol, dna2[0])
+            second.add_match(symbol, dna2[0])
             both = self.get_best_score(dna1[1:], dna2[1:])
             both.add_match(dna1[0], dna2[0])
             if first.count_score() >= second.count_score() and first.count_score() >= both.count_score():
@@ -39,7 +40,7 @@ class DNAAlignment:
                 return both
 
 
-class Alignment:
+class Alignment(DNAAlignment):
     def __init__(self):
         self.dna1 = ""
         self.dna2 = ""
@@ -56,7 +57,7 @@ class Alignment:
         for i in range(l1):
             if self.dna1[i] == self.dna2[i]:
                 curr_score += 2
-            elif self.dna1[i] == super.symbol or self.dna2[i] == super.symbol:
+            elif self.dna1[i] == symbol or self.dna2[i] == symbol:
                 curr_score -= 2
             else:
                 curr_score -= 1
